@@ -1,0 +1,242 @@
+extends layout_nologin
+
+block content
+    br
+    br
+    ul.nav.nav-pills.pull-right
+        li.active
+        a(data-toggle='modal', href='#new_student_application').btn.btn-primary
+            span.icon-plus-sign.icon-large
+            |   Apply Now
+    br
+    h3 PART A - CHOOSE YOUR COURSE
+    table.table.table-bordered(cellpadding='5')
+      thead
+        tr(style='font-size: 20px; line-height: normal;')
+              th(width='50px')
+                | Select Course
+              th(width='50px')
+                | Course Code
+              th
+                | Qualification
+              th(width='50px')
+                | Cricos Code
+              th(width='60px')
+                | Duration
+              th
+                | Preferred Intake
+      tbody
+        each course in courses
+          tr
+            td(align='center')
+                input.course_code(type='checkbox', name='course[]', value='#{course.courseCode}', id="#{course.courseCode}", onchange='return myFunction(this.value); ')
+            td= course.courseCode
+            td= course.courseName
+            td= course.cricosCode
+            td #{course.duration + " Weeks"}
+            td
+
+
+    br
+    h3 PART B - PERSONAL DETAILS
+    table(width='100%')
+        tr
+          td
+            label
+              b Title*
+            select#title.form-control(name='title', style='width: 35%;')
+              option(value='') Please Select
+              option(value='Mr') Mr
+              option(value='Mrs') Mrs
+              option(value='Miss') Miss
+              option(value='Ms') Ms
+        tr
+          td
+            label
+              b First Name*
+            input#name.form-control(type='text', name='name')
+          td
+            label
+              b Middle Name
+            input#middle_name.form-control(type='text', name='middle_name')
+          td
+            label
+              b Family Name*
+            input#family_name.form-control(type='text', name='family_name')
+        tr
+          td
+            label
+              b Preferred Name
+            input#prefered_name.form-control(type='text', name='prefered_name')
+          td
+            div(style='margin-left: 20px;')
+              label
+                b Gender*
+              br
+              input(type='radio', name='gender[]', checked='checked', value='Male')
+              |  Male
+              &nbsp;
+              input(type='radio', name='gender[]', value='Female')
+              |  Female
+    br
+    div
+        b Date of Birth*
+    br
+    #dob.input-append.date(data-date='12-02-2012', data-date-format='dd-mm-yyyy', data-date-viewmode='months')
+      input.span(size='16', type='text', value='12-02-2012')
+      span.add-on
+        span.glyphicon.glyphicon-calendar
+    br
+    #Current_address
+        h4 Current address:
+          //
+             <label>Address</label>
+          //
+             <textarea rows="2" name="aus_address" id="aus_address" class="form-control"></textarea>
+        table(width='100%')
+          tr
+            td
+              label(for='')
+                b Building Name
+              input#building_name.form-control(type='text', name='building_name', value='')
+          tr
+            td
+              label(for='')
+                b Unit No
+              input#unit_no.form-control(type='number', name='unit_no', value='')
+            td
+              label(for='')
+                b Street No*
+              input#street_no.form-control(type='number', name='street_no', value='')
+            td
+              label(for='')
+                b Street Name*
+              input#street_name.form-control(type='text', name='street_name', value='')
+            td
+              label(for='')
+                b Suburb*
+              input#stb.form-control(type='text', name='stb', value='')
+          tr
+            td
+              label(for='')
+                b State*
+              input#state.form-control(name='state')
+            td
+              label(for='')
+                b Country*
+              input#country.form-control(type='text', name='country', value='Australia')
+            td
+              label(for='')
+                b Postcode*
+              input#postcode.form-control(type='number', name='postcode', value='')
+          tr
+            td
+              label(for='')
+                b Telephone
+              input#telephone.form-control(type='text', name='telephone', value='')
+            td
+              label(for='')
+                b Mobile*
+              input#mobile.form-control(type='text', name='mobile', value='')
+            td
+              label(for='')
+                b Fax
+              input#fax.form-control(type='text', name='fax', value='')
+            td(width='350px')
+              label(for='')
+                b Email*
+              input#email.form-control(type='email', name='email', value='')
+
+    br
+    h4(style='display: inline;') Permanent address:&nbsp;&nbsp;
+    input#Perm_sameas_above(type='checkbox', name='Perm_sameas_above', value='1', onclick='PermsameAsAbove()')
+    #permanent_address
+      | Same as above
+    table#perm_address_table(width='100%', name='perm_address_table')
+      tr
+        td
+          label(for='')
+            b Building Name
+          input#perm_building_name.form-control(type='text', name='perm_building_name', value='')
+      tr
+        td
+          label(for='')
+            b Unit No
+          input#perm_unit_no.form-control(type='number', name='perm_unit_no', value='')
+        td
+          label(for='')
+            b Street No
+          input#perm_street_no.form-control(type='number', name='perm_street_no', value='')
+        td
+          label(for='')
+            b Street Name
+          input#perm_street_name.form-control(type='text', name='perm_street_name', value='')
+        td
+          label(for='')
+            b Suburb
+          input#perm_stb.form-control(type='text', name='perm_stb', value='')
+      tr
+        td
+          label(for='')
+            b State
+          input#perm_state.form-control(name='perm_state')
+        td
+          label(for='')
+            b Country
+          input#perm_country.form-control(type='text', name='perm_country', value='Australia')
+        td
+          label(for='')
+            b Postcode
+          input#perm_postcode.form-control(type='number', name='perm_postcode', value='')
+    br
+    h4(style='display: inline;') Postal address:&nbsp;&nbsp;
+    input#Postal_sameas_above(type='checkbox', name='Postal_sameas_above', value='1', onclick='PostsameAsAbove()')
+    #Postal_address(style='display: inline;')
+      |   Same as above
+    br
+    br
+    table#postal_address_table(width='100%', name='postal_address_table')
+      tr
+        td
+          label(for='')
+            b Building Name
+          input#postal_building_name.form-control(type='text', name='postal_building_name', value='')
+        td
+          label(for='')
+            b PO Box
+          input#postal_po_box.form-control(type='text', name='postal_po_box', value='')
+      tr
+        td
+          label(for='')
+            b Unit No
+          input#postal_unit_no.form-control(type='number', name='postal_unit_no', value='')
+        td
+          label(for='')
+            b Street No
+          input#postal_street_no.form-control(type='number', name='postal_street_no', value='')
+        td
+          label(for='')
+            b Street Name
+          input#postal_street_name.form-control(type='text', name='postal_street_name', value='')
+        td
+          label(for='')
+            b Suburb
+          input#postal_stb.form-control(type='text', name='postal_stb', value='')
+      tr
+        td
+          label(for='')
+            b State
+          input#postal_state.form-control(name='postal_state')
+        td
+          label(for='')
+            b Country
+          input#postal_country.form-control(type='text', name='postal_country', value='Australia')
+        td
+          label(for='')
+            b Postcode
+          input#postal_postcode.form-control(type='number', name='postal_postcode', value='')
+  br
+block modals
+    include modals/student_application
+
+

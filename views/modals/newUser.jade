@@ -1,0 +1,45 @@
+#createNewUser.modal.fade
+    .modal-dialog
+        .modal-content
+            form#modal-form.form-horizontal(method = "post", action = "/new_user", data-parsley-validate)
+                .modal-header
+                    a.close(data-dismiss='modal') ×
+                    h4.modal-title New User
+                .modal-body
+                    .form-group
+                        input(type='hidden', name='_csrf', value=_csrf)
+                        label.control-label.col-md-4(for='profile[name]') Name
+                        .col-md-8
+                            input.form-control(type='text', name='profile[name]', required, placeholder='John Smith')
+                    .form-group
+                        label.control-label.col-md-4(for='profile[location]') Location
+                        .col-md-8
+                            input.form-control(type='text',name='profile[location]',required,placeholder='Melbourne')
+                    .form-group
+                        label.control-label.col-md-4(for='profile[phoneNumber]') Phonenumber
+                        .col-md-8
+                            input.form-control(type='text',name='profile[phoneNumber]',required,data-parsley-type="integer", placeholder='0440404040')
+                    .form-group
+                        label.control-label.col-md-4(for='email') Email
+                        .col-md-8
+                            input.form-control(type='email',name='email',id='email',required,placeholder='email@example.com')
+                            span.help-inline
+                    .form-group
+                        label.control-label.col-md-4(for='password') Password
+                        .col-md-8
+                            input.form-control(type='password',name='password',required,placeholder='password')
+                    .form-group
+                      label.control-label.col-md-4(for='confirmPassword') Confirm Password
+                      .col-sm-8
+                        input.form-control(type='password', name='confirmPassword', id='confirmPassword', placeholder='Confirm Password')
+                    .form-group
+                        label.control-label.col-md-4(for='role') Role
+                        .col-md-8
+                            select.form-control#role.input-xlarge(name='role')
+                                option(value="admin") ADMIN
+                                option(value="guest") GUEST
+                                option(value="user") USER
+                .modal-footer
+                    button#modal-user-btn(type='submit', class="btn btn-success") Create
+                    a.btn.btn-danger(href='#', data-dismiss='modal') Cancel
+

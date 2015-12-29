@@ -1,0 +1,31 @@
+extends layout
+
+block content
+    .page-header
+        h3 Users
+    ul.nav.nav-pills.pull-right
+        li
+        a(data-toggle='modal', href='#createNewUser').btn.btn-primary
+            span.icon-plus-sign.icon-large
+            |   Add User
+    br
+    br
+    br
+    .row
+        .col-md-12
+             table.table.table-striped.table-bordered.table-hover#usersList(width="100%")
+                thead
+                    tr
+                        th Sr. No.
+                        th Name
+                        th Location
+                        th Phonenumber
+                        th Email
+                        th Role
+                        th Actions
+                tbody
+
+block modals
+    include modals/newUser
+    include modals/editUser
+    include modals/deleteUser

@@ -1,0 +1,37 @@
+#editUser.modal.fade
+    .modal-dialog
+        .modal-content
+            form#modal-form.form-horizontal(method = "post", action = "/updateUser")
+                .modal-header
+                    a.close(data-dismiss='modal') ×
+                    h4.modal-title Edit User
+                .modal-body
+                    .form-group
+                        input(type='hidden', name='_csrf', value=_csrf)
+                        label.control-label.col-md-4(for='profile[name]') Name
+                        .col-md-8
+                            input#name.form-control(type='text', name='profile[name]', required, placeholder='John Smith')
+                    .form-group
+                        label.control-label.col-md-4(for='profile[location]') Location
+                        .col-md-8
+                            input#location.form-control(type='text',name='profile[location]',required,placeholder='Melbourne')
+                    .form-group
+                        label.control-label.col-md-4(for='profile[phoneNumber]') Phonenumber
+                        .col-md-8
+                            input.form-control#phoneNumber(type='text',name='profile[phoneNumber]')
+                    .form-group
+                        label.control-label.col-md-4(for='email') Email
+                        .col-md-8
+                            input#editEmail.form-control(type='email',name='email', readonly)
+                            span.help-inline
+                    .form-group
+                        label.control-label.col-md-4(for='role') Role
+                        .col-md-8
+                            select.form-control#editRole.input-xlarge(name='role')
+                                option(value="admin") ADMIN
+                                option(value="guest") GUEST
+                                option(value="user") USER
+                .modal-footer
+                    button.btn.btn-success(type='submit', style='width: 100%;')
+                        span.glyphicon.glyphicon-ok-sign
+                          |  Update

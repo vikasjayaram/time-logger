@@ -1,0 +1,24 @@
+extends index
+
+block pageHeader
+    .page-title 
+        h3 Terms And Conditions
+
+block breadCrumbs
+  li
+    i.icon-user  Manage T & C         
+
+block afterNav
+    div.content
+        #terms_and_conditions_editor
+        br
+        ul.nav.nav-pills.pull-right
+            li.active
+            a(data-toggle='modal', href='#updateTermsAndConditions').btn.btn-primary
+                span
+                |    Update T & C
+
+block modals
+
+block pageScripts
+    script(src='/js/views/terms_and_conditions.js')

@@ -1,0 +1,30 @@
+extends layout
+
+block content
+    .page-header
+        h3 Projects
+    ul.nav.nav-pills.pull-right
+        li
+        a(data-toggle='modal', href='#createProject').btn.btn-primary
+            span.icon-plus-sign.icon-large
+            |   Add Project
+    br
+    br
+    br
+    .row
+        .col-md-12
+             table.table.table-striped.table-bordered.table-hover#projectList(width="100%")
+                thead
+                    tr
+                        th Sr. No.
+                        th Project Name
+                        th Client Name
+                        th Created By
+                        th Status
+                        th Actions
+                tbody
+
+block modals
+    include modals/newProject
+    include modals/editProject
+    include modals/deleteProject

@@ -1,0 +1,29 @@
+extends layout
+
+block content
+    .page-header
+        h3 Clients
+    ul.nav.nav-pills.pull-right
+        li
+        a(data-toggle='modal', href='#createClient').btn.btn-primary
+            span.icon-plus-sign.icon-large
+            |   Add Client
+    br
+    br
+    br
+    .row
+        .col-md-12
+             table.table.table-striped.table-bordered.table-hover#clientList(width="100%")
+                thead
+                    tr
+                        th Sr. No.
+                        th Client Name
+                        th Money
+                        th Status
+                        th Actions
+                tbody
+
+block modals
+    include modals/newClient
+    include modals/editClient
+    include modals/deleteClient

@@ -1,0 +1,21 @@
+#createClient.modal.fade
+    .modal-dialog
+        .modal-content
+            form#modal-form.form-horizontal(method = "post", action = "/client/new")
+                .modal-header
+                    a.close(data-dismiss='modal') ×
+                    h4.modal-title New Client
+                .modal-body
+                    .form-group
+                        input(type='hidden', name='_csrf', value=_csrf)
+                        label.control-label.col-md-4(for='name') Name
+                        .col-md-8
+                            input.form-control(type='text', name='name', placeholder='Greg Fisher')
+                    .form-group
+                        label.control-label.col-md-4(for='money') Money ($)
+                        .col-md-8
+                            input.form-control(type='text',name='money',placeholder='1000')
+                .modal-footer
+                    button#modal-course-btn(type='submit', class="btn btn-success") Create
+                    a.btn.btn-danger(href='#', data-dismiss='modal') Cancel
+

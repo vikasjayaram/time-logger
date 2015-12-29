@@ -1,0 +1,32 @@
+extends layout
+
+block content
+    .page-header
+        h3 Log Time
+    ul.nav.nav-pills.pull-right
+        li
+        a(data-toggle='modal', href='#createLog').btn.btn-primary
+            span.icon-plus-sign.icon-large
+            |   Add Entry
+    br
+    br
+    br
+    .row
+        .col-md-12
+             table.table.table-striped.table-bordered.table-hover#logList(width="100%")
+                thead
+                    tr
+                        th Sr. No.
+                        th Date
+                        th Person
+                        th Client
+                        th Project
+                        th Hours
+                        th Description
+                        th Actions
+                tbody
+
+block modals
+    include modals/newLogEntry
+    include modals/editLogEntry
+    include modals/deleteLogEntry

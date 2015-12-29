@@ -1,0 +1,21 @@
+#new_student_application.modal.fade
+    .modal-dialog(style='width: 800px')
+        .modal-content
+            form(action='')
+                .modal-header
+                    a.close(data-dismiss='modal') ×
+                    h4.modal-title New Application
+                .modal-body
+                    .tabbable
+                        ul.nav.nav-tabs
+                          li.active
+                            a(href='#tab1', data-toggle='tab') Section 1
+                          li
+                            a(href='#tab2', data-toggle='tab') Section 2
+                .modal-footer
+                    .tab-content
+                      #tab1.tab-pane
+                        a.btn.pull-right(href='#tab2', data-toggle='tab') Next
+                      #tab2.tab-pane
+                        a.btn.pull-left(href='#tab2', data-toggle='tab') Prev
+

@@ -1,0 +1,20 @@
+#deleteClient.modal.fade
+  .modal-dialog
+    .modal-content
+      form#modal-delete-client-form.form-horizontal(method = "post", action = "/client/delete")
+        .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+            h4#Heading.modal-title.custom_align Delete Client
+          .modal-body
+            input(type='hidden', name='_csrf', value=_csrf)
+            input(type='hidden', name='_id', id='_id', value='')
+            .alert.alert-warning
+              span.glyphicon.glyphicon-warning-sign
+              | &nbsp;&nbsp;Are you sure you want to delete this client?
+          .modal-footer
+            button.btn.btn-danger(type='submit')
+              span.glyphicon.glyphicon-ok-sign
+              |  Yes
+            button.btn.btn-primary(type='button', data-dismiss='modal')
+              span.glyphicon.glyphicon-remove
+              |  No

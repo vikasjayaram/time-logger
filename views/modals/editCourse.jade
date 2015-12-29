@@ -1,0 +1,57 @@
+#editCourse.modal.fade
+    .modal-dialog
+        .modal-content
+            form#modal-form.form-horizontal(method = "post", action = "/updateCourse")
+                .modal-header
+                    a.close(data-dismiss='modal') ×
+                    h4.modal-title Edit Course
+                .modal-body
+                    .form-group
+                        input(type='hidden', name='_csrf', value=_csrf)
+                        input(type='hidden', name='_id', value="")
+                        label.control-label.col-md-4(for='courseCode') Course Code
+                        .col-md-8
+                            input#courseCode.form-control(type='text', name='courseCode', placeholder='OAPPSYS-123', readonly)
+                    .form-group
+                        label.control-label.col-md-4(for='courseName') Course Name
+                        .col-md-8
+                            input#courseName.form-control(type='text',name='courseName',placeholder='Diploma in Awesomeness')
+                    .form-group
+                        label.control-label.col-md-4(for='cricosCode') Cricos Code
+                        .col-md-8
+                            input#cricosCode.form-control(type='text',name='cricosCode',placeholder='CRICOS1234')
+                            span.help-inline
+                    .form-group
+                        label.control-label.col-md-4(for='duration') Duration(Weeks)
+                        .col-md-8
+                            input#duration.form-control(type='number',name='duration', placeholder='12')
+                    .form-group
+                        label.control-label.col-md-4(for='studyWeeks') Study Weeks
+                        .col-md-8
+                            input#studyWeeks.form-control(type='number',name='studyWeeks', placeholder='12')
+                    .form-group
+                      label.control-label.col-md-4(for='holidayWeeks') Holiday Weeks
+                      .col-sm-8
+                        input#holidayWeeks.form-control(type='number', name='holidayWeeks', placeholder='6')
+                    .form-group
+                      label.control-label.col-md-4(for='tutionFee') Tution Fee($)
+                      .col-sm-8
+                        input#tutionFee.form-control(type='number', name='tutionFee', placeholder='1500')
+                    .form-group
+                      label.control-label.col-md-4(for='materialFee') Material Fee($)
+                      .col-sm-8
+                        input#materialFee.form-control(type='number', name='materialFee', placeholder='300')
+                    .form-group
+                        label.control-label.col-md-4(for='studyPeriod') Study Period
+                        .col-md-8
+                            textarea#studyPeriod.form-control(name='studyPeriod')
+                    .form-group
+                        label.control-label.col-md-4(for='status') Status
+                        .col-md-8
+                            select.form-control#status.input-xlarge(name='status')
+                                option(value="active") ACTIVE
+                                option(value="inactive") INACTIVE
+                .modal-footer
+                    button.btn.btn-success(type='submit', style='width: 100%;')
+                        span.glyphicon.glyphicon-ok-sign
+                          |  Update

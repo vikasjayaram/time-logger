@@ -1,0 +1,43 @@
+#createLog.modal.fade
+    .modal-dialog
+        .modal-content
+            form#modal-form.form-horizontal(method = "post", action = "/logtime/new")
+                .modal-header
+                    a.close(data-dismiss='modal') ×
+                    h4.modal-title New Log Entry
+                .modal-body
+                    .form-group
+                        input(type='hidden', name='_csrf', value=_csrf)
+                        label.control-label.col-md-4(for='hours') Date
+                        .col-md-8
+                            input#date.form-control(type='date', name='date')
+                    .form-group
+                        label.control-label.col-md-4(for="name") Name
+                        .col-md-8
+                            select.form-control#name.input-xlarge(type="select", name='name')
+                                each user in users
+                                    option(id="#{user._id}") #{user['profile'].name}
+                    .form-group
+                        label.control-label.col-md-4(for="clientName") Client Name
+                        .col-md-8
+                            select.form-control#clientName.input-xlarge(type="select", name='clientName')
+                                each client in clients
+                                    option(id="#{client._id}") #{client.name}
+                    .form-group
+                        label.control-label.col-md-4(for="projectName") Project
+                        .col-md-8
+                            select.form-control#projectName.input-xlarge(type="select", name='projectName')
+                                each project in projects
+                                    option(id="#{project._id}") #{project.name}
+                    .form-group
+                        label.control-label.col-md-4(for='hours') Hours Spent
+                        .col-md-8
+                            input#hours.form-control(type='text', name='hours')
+                    .form-group
+                        label.control-label.col-md-4(for='description') Description
+                        .col-md-8
+                            textarea#description.form-control(name="description")
+                 .modal-footer
+                    button#modal-course-btn(type='submit', class="btn btn-success") Create
+                    a.btn.btn-danger(href='#', data-dismiss='modal') Cancel
+

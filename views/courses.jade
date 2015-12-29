@@ -1,0 +1,31 @@
+extends layout
+
+block content
+    .page-header
+        h3 Courses
+    ul.nav.nav-pills.pull-right
+        li.active
+        a(data-toggle='modal', href='#createNewCourse').btn.btn-primary
+            span.icon-plus-sign.icon-large
+            |   Add Course
+    br
+    br
+    br
+    .row
+        .col-md-12
+             table.table.table-striped.table-bordered.table-hover#courseList(width="100%")
+                thead
+                    tr
+                        th Sr. No.
+                        th Status
+                        th Course Code
+                        th Course Name
+                        th Cricos Code
+                        th Course Details
+                        th Actions
+                tbody
+
+block modals
+    include modals/newCourse
+    include modals/editCourse
+    include modals/deleteCourse

@@ -1,0 +1,28 @@
+#editClient.modal.fade
+    .modal-dialog
+        .modal-content
+            form#modal-client-form.form-horizontal(method = "post", action = "/client/edit")
+                .modal-header
+                    a.close(data-dismiss='modal') ×
+                    h4.modal-title Edit Client
+                .modal-body
+                    .form-group
+                        input(type='hidden', name='_csrf', value=_csrf)
+                        input(type='hidden', name='_id', value="")
+                        label.control-label.col-md-4(for='name') Name
+                        .col-md-8
+                            input#name.form-control(type='text', name='name', placeholder='Greg Fisher')
+                    .form-group
+                        label.control-label.col-md-4(for='money') Money ($)
+                        .col-md-8
+                            input#money.form-control(type='text',name='money',placeholder='1000')
+                    .form-group
+                        label.control-label.col-md-4(for='status') Status
+                        .col-md-8
+                            select.form-control#status.input-xlarge(name='status')
+                                option(value="active") ACTIVE
+                                option(value="inactive") INACTIVE
+                .modal-footer
+                    button.btn.btn-success(type='submit', style='width: 100%;')
+                        span.glyphicon.glyphicon-ok-sign
+                          |  Update
